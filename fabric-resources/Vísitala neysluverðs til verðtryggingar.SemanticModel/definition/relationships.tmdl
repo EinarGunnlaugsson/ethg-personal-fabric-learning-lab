@@ -1,0 +1,12 @@
+relationship 8197b112-ce59-47a9-8441-d5d2fb2aa1f3
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DateTable.Date
+	toColumn: 'VIS01004 (2)'.DateColumn
+
+relationship b885fa3e-9f6e-42bc-bc4a-9475bb9d64b3
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: DateTable.Date
+	toColumn: SortedTable.DateColumn
+

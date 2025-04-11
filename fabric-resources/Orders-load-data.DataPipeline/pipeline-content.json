@@ -1,0 +1,23 @@
+{
+  "properties": {
+    "activities": [
+      {
+        "name": "Load order data to Lakehouse",
+        "type": "RefreshDataflow",
+        "dependsOn": [],
+        "policy": {
+          "timeout": "0.12:00:00",
+          "retry": 0,
+          "retryIntervalInSeconds": 30,
+          "secureOutput": false,
+          "secureInput": false
+        },
+        "typeProperties": {
+          "dataflowId": "42026964-0e93-4d57-b59e-d795c58ad47c",
+          "workspaceId": "64c0f161-e476-4bf2-bb58-a2e2685f5f59",
+          "notifyOption": "NoNotification"
+        }
+      }
+    ]
+  }
+}

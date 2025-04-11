@@ -1,0 +1,80 @@
+table 'VIS01004 (2)'
+	lineageTag: 5960fa06-93b9-4f67-97d0-6e8d201adf3f
+
+	column 'Column1.key'
+		dataType: string
+		lineageTag: 6237bb95-16db-4a3e-aeab-cdbce4c57075
+		summarizeBy: none
+		sourceColumn: Column1.key
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Column1.values'
+		dataType: double
+		lineageTag: 05ad1791-81e1-43c7-9320-e6f5addb08d5
+		summarizeBy: sum
+		sourceColumn: Column1.values
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column DateColumn = ```
+			
+			DATE(
+			    VALUE(
+			        LEFT('VIS01004 (2)'[Column1.key], 4)
+			        ), 
+			        VALUE(
+			            MID('VIS01004 (2)'[Column1.key], 6, 2)
+			            ), 
+			        1
+			    )
+			```
+		formatString: General Date
+		lineageTag: 307f679c-7594-4e4b-aaf2-5f1294a5d2bb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Zero line' = 0
+		formatString: 0
+		lineageTag: 8396d864-9e48-43a3-ac4b-b2ddffc5deb1
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'VIS01004 (2)' = m
+		mode: import
+		source =
+				let
+				content = "{
+				  ""query"": [
+				    {
+				      ""code"": ""Vísitala"",
+				      ""selection"": {
+				        ""filter"": ""item"",
+				        ""values"": [
+				          ""financial_indexation""
+				        ]
+				      }
+				    }
+				  ],
+				  ""response"": {
+				    ""format"": ""json""
+				  }
+				}",
+				    Source = Json.Document(Web.Contents("https://px.hagstofa.is:443/pxis/api/v1/is/Efnahagur/visitolur/1_vnv/1_vnv/VIS01004.px", [Content=Text.ToBinary(content)])),
+				    data = Source[data],
+				    #"Converted to Table" = Table.FromList(data, Splitter.SplitByNothing(), null, null, ExtraValues.Error),
+				    #"Expanded Column1" = Table.ExpandRecordColumn(#"Converted to Table", "Column1", {"key", "values"}, {"Column1.key", "Column1.values"}),
+				    #"Expanded Column1.key" = Table.ExpandListColumn(#"Expanded Column1", "Column1.key"),
+				    #"Expanded Column1.values" = Table.ExpandListColumn(#"Expanded Column1.key", "Column1.values"),
+				    #"Filtered Rows" = Table.SelectRows(#"Expanded Column1.values", each ([Column1.key] <> "financial_indexation") and ([Column1.values] <> ".")),
+				    #"Replaced Value" = Table.ReplaceValue(#"Filtered Rows",".",",",Replacer.ReplaceText,{"Column1.values"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Replaced Value",{{"Column1.key", type text}, {"Column1.values", type number}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+
