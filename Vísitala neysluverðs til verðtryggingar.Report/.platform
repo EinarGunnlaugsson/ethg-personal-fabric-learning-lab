@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Vísitala neysluverðs til verðtryggingar"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "b2629772-6bb7-a051-425f-e111180622ca"
+  }
+}

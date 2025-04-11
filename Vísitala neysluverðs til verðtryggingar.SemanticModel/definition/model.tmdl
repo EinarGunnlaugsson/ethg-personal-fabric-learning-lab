@@ -1,0 +1,21 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: is-IS
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.141.1580.0 (25.03)+aa8628f0e8285c810874f1464275f27e3b63a25b
+
+annotation PBI_QueryOrder = ["VIS01004 (2)","_Mæligildi"]
+
+ref table 'VIS01004 (2)'
+ref table DateTable
+ref table _Mæligildi
+ref table SortedTable
+
+ref cultureInfo en-US
+

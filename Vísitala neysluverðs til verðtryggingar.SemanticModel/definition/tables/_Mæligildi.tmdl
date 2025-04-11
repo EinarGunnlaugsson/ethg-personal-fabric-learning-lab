@@ -1,0 +1,105 @@
+table _Mæligildi
+	lineageTag: 4958d1e1-5304-41d6-84c2-87b8a2516d08
+
+	measure 'Vísitala Neysluverðs til Verðtryggingar' =
+			
+			SUM('VIS01004 (2)'[Column1.values])
+		lineageTag: 4998a402-dd1f-492e-a2b4-462112ebb368
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Vís. Neys. Mánaðar breyting %' = ```
+			
+			var visitala_neysluverds = [Vísitala Neysluverðs til Verðtryggingar]
+			var visitala_neysluverds_fyrri_man =
+			CALCULATE(
+			    [Vísitala Neysluverðs til Verðtryggingar],
+			    DATEADD(DateTable[Date], -1, MONTH)
+			)
+			var man_breyting = 
+			DIVIDE(visitala_neysluverds - visitala_neysluverds_fyrri_man, visitala_neysluverds_fyrri_man)
+			var latest_date_with_value = LASTNONBLANK(DateTable[Date], visitala_neysluverds)
+			return
+			if(
+			    SELECTEDVALUE(DateTable[Date]) <= latest_date_with_value,
+			    man_breyting,
+			    blank()
+			)
+			```
+		formatString: 0.0%;-0.0%;0.0%
+		lineageTag: 0636ad84-2e15-4f64-b182-2a4f10e509a9
+
+	measure '0 line' = sum('VIS01004 (2)'[Zero line])
+		formatString: 0
+		lineageTag: 230268c4-55ae-48be-bed8-02fbce74e11a
+
+	measure 'Vís. Neys. Mánaðar breyting' = ```
+			
+			var visitala_neysluverds = [Vísitala Neysluverðs til Verðtryggingar]
+			var visitala_neysluverds_fyrri_man =
+			CALCULATE(
+			    [Vísitala Neysluverðs til Verðtryggingar],
+			    DATEADD(DateTable[Date], -1, MONTH)
+			)
+			var man_breyting = 
+			visitala_neysluverds - visitala_neysluverds_fyrri_man
+			var latest_date_with_value = LASTNONBLANK(DateTable[Date], visitala_neysluverds)
+			return
+			/*switch(
+			    true(),
+			    SELECTEDVALUE(DateTable[Date]) <= latest_date_with_value, man_breyting,
+			    SELECTEDVALUE(DateTable[Date]) = 1995-04-01, blank(),
+			    blank()
+			)*/
+			
+			if(
+			    SELECTEDVALUE(DateTable[Date]) <= latest_date_with_value,
+			    man_breyting,
+			    blank()
+			)
+			```
+		lineageTag: 9fe4f5c5-dc29-4ded-9861-e98379daa3c9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Avg Change Month over Month' =
+			
+			/*VAR visitala_neysluverds = [Vís. Neys. Mánaðar breyting]
+			RETURN
+			AVERAGEX(
+			    FILTER(
+			        ALL(DateTable),
+			        DateTable[Date] IN VALUES(DateTable[Date]) && [Vís. Neys. Mánaðar breyting] <> BLANK()
+			    ),
+			    [Vís. Neys. Mánaðar breyting]
+			)*/
+			
+			AVERAGE(SortedTable[MonthOverMonthChange])
+		lineageTag: 7ff83190-1e00-4a0e-9d7f-85690b71af4b
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure MedianChange = MEDIAN(SortedTable[MonthOverMonthChange])
+		lineageTag: 78e42a45-97fe-4a76-9d45-05a45255c4ac
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column HIDE_THIS_COLUMN
+		dataType: string
+		lineageTag: 8c43d9dd-7cad-47a6-a6ab-ea52e264ab96
+		summarizeBy: none
+		sourceColumn: HIDE_THIS_COLUMN
+
+		annotation SummarizationSetBy = Automatic
+
+	partition _Mæligildi = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [HIDE_THIS_COLUMN = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"HIDE_THIS_COLUMN", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_ResultType = Table
+

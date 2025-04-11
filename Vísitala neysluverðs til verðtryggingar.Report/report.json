@@ -1,0 +1,78 @@
+{
+  "config": "{\"version\":\"5.49\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY23SU11\",\"version\":\"5.49\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":2,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true,\"useEnhancedTooltips\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY23SU11",
+            "path": "BaseThemes/CY23SU11.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{}",
+      "displayName": "Vísitala Neysluverðs til Verðtryggingar",
+      "displayOption": 1,
+      "filters": "[{\"name\":\"Filter092950691ab0720a1655\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"DateTable\"}},\"Property\":\"Date\"}},\"type\":\"Advanced\",\"howCreated\":1}]",
+      "height": 2000.00,
+      "name": "ReportSection",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"0780dce05e34e448bc03\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.95778364116095,\"y\":70.92348284960423,\"z\":0,\"width\":1184.759894459103,\"height\":577.5197889182058,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DateTable.Date\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Mæligildi.Vísitala Neysluverðs til Verðtryggingar\"}],\"Y2\":[{\"queryRef\":\"_Mæligildi.Vís. Neys. Mánaðar breyting\"},{\"queryRef\":\"_Mæligildi.0 line\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DateTable\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Mæligildi\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"DateTable.Date\",\"NativeReferenceName\":\"Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Vísitala Neysluverðs til Verðtryggingar\"},\"Name\":\"_Mæligildi.Vísitala Neysluverðs til Verðtryggingar\",\"NativeReferenceName\":\"Vísitala Neysluverðs til Verðtryggingar\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Vís. Neys. Mánaðar breyting %\"},\"Name\":\"_Mæligildi.Vís. Neys. Mánaðar breyting\",\"NativeReferenceName\":\"Vís. Neys. Mánaðar breyting %\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"0 line\"},\"Name\":\"_Mæligildi.0 line\",\"NativeReferenceName\":\"0 line\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}},{\"properties\":{\"showSeries\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}},\"selector\":{\"metadata\":\"_Mæligildi.0 line\"}},{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Conditional\":{\"Cases\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":2,\"Left\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"_Mæligildi\"}},\"Property\":\"Vís. Neys. Mánaðar breyting %\"}},\"Right\":{\"Literal\":{\"Value\":\"0D\"}}}},\"Value\":{\"Literal\":{\"Value\":\"'#000000'\"}}},{\"Condition\":{\"Comparison\":{\"ComparisonKind\":3,\"Left\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"_Mæligildi\"}},\"Property\":\"Vís. Neys. Mánaðar breyting %\"}},\"Right\":{\"Literal\":{\"Value\":\"0D\"}}}},\"Value\":{\"Literal\":{\"Value\":\"'#6CB075'\"}}}]}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"_Mæligildi.Vís. Neys. Mánaðar breyting\"}}],\"valueAxis\":[{\"properties\":{\"logAxisScale\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"y2Axis\":[{\"properties\":{\"secEnd\":{\"expr\":{\"Literal\":{\"Value\":\"0.05D\"}}},\"secStart\":{\"expr\":{\"Literal\":{\"Value\":\"-0.05D\"}}},\"secShowAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"lineStyles\":[{\"properties\":{\"strokeWidth\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}}},\"selector\":{\"metadata\":\"_Mæligildi.Vísitala Neysluverðs til Verðtryggingar\"}},{\"properties\":{\"strokeWidth\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}}},\"selector\":{\"metadata\":\"_Mæligildi.Vís. Neys. Mánaðar breyting\"}},{\"properties\":{\"strokeWidth\":{\"expr\":{\"Literal\":{\"Value\":\"1L\"}}},\"lineStyle\":{\"expr\":{\"Literal\":{\"Value\":\"'dashed'\"}}}},\"selector\":{\"metadata\":\"_Mæligildi.0 line\"}}],\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#666666'\"}}}}}},\"selector\":{\"metadata\":\"_Mæligildi.0 line\"}}],\"seriesLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"zoom\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Vísitala Neysluverðs til Verðtryggingar'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 577.52,
+          "width": 1184.76,
+          "x": 47.96,
+          "y": 70.92,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"421cdb0e59b78879bc8b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":422.5,\"y\":810.8333333333334,\"z\":3000,\"width\":810.8333333333334,\"height\":470,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DateTable.Date\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Mæligildi.Vísitala Neysluverðs til Verðtryggingar\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DateTable\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Mæligildi\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"DateTable.Date\",\"NativeReferenceName\":\"Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Vísitala Neysluverðs til Verðtryggingar\"},\"Name\":\"_Mæligildi.Vísitala Neysluverðs til Verðtryggingar\",\"NativeReferenceName\":\"Vísitala Neysluverðs til Verðtryggingar\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"valueAxis\":[{\"properties\":{\"logAxisScale\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"y2Axis\":[{\"properties\":{\"secEnd\":{\"expr\":{\"Literal\":{\"Value\":\"0.05D\"}}},\"secStart\":{\"expr\":{\"Literal\":{\"Value\":\"-0.05D\"}}},\"secShowAxisTitle\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"lineStyles\":[{\"properties\":{\"strokeWidth\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}}},\"selector\":{\"metadata\":\"_Mæligildi.Vísitala Neysluverðs til Verðtryggingar\"}}],\"seriesLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"zoom\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Vísitala Neysluverðs til Verðtryggingar'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 470.00,
+          "width": 810.83,
+          "x": 422.50,
+          "y": 810.83,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"6c4219aa19edf6d5c527\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.5,\"y\":702.5,\"z\":1000,\"width\":361.6666666666667,\"height\":578.3333333333334,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"DateTable.Date\"},{\"queryRef\":\"Sum(SortedTable.OriginalValue)\"},{\"queryRef\":\"Sum(SortedTable.MonthOverMonthChange)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DateTable\",\"Type\":0},{\"Name\":\"s\",\"Entity\":\"SortedTable\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"DateTable.Date\",\"NativeReferenceName\":\"Date\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"OriginalValue\"}},\"Function\":0},\"Name\":\"Sum(SortedTable.OriginalValue)\",\"NativeReferenceName\":\"Vísitala\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"s\"}},\"Property\":\"MonthOverMonthChange\"}},\"Function\":0},\"Name\":\"Sum(SortedTable.MonthOverMonthChange)\",\"NativeReferenceName\":\"Breyting\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"columnProperties\":{\"Sum(VIS01004 (2).Column1.values)\":{\"displayName\":\"Vísitala\"},\"Sum(SortedTable.OriginalValue)\":{\"displayName\":\"Vísitala\"},\"Sum(SortedTable.MonthOverMonthChange)\":{\"displayName\":\"Breyting\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"95.77777594831704D\"}}}},\"selector\":{\"metadata\":\"Sum(SortedTable.MonthOverMonthChange)\"}}]},\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 578.33,
+          "width": 361.67,
+          "x": 47.50,
+          "y": 702.50,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"d0c3136b141d0d2a93de\",\"layouts\":[{\"id\":0,\"position\":{\"x\":422.5,\"y\":702.5,\"z\":2000,\"width\":306.6666666666667,\"height\":95,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"multiRowCard\",\"projections\":{\"Values\":[{\"queryRef\":\"_Mæligildi.Avg Change Month over Month\"},{\"queryRef\":\"_Mæligildi.MedianChange\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"_\",\"Entity\":\"_Mæligildi\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Avg Change Month over Month\"},\"Name\":\"_Mæligildi.Avg Change Month over Month\",\"NativeReferenceName\":\"Avg Change Month over Month\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"MedianChange\"},\"Name\":\"_Mæligildi.MedianChange\",\"NativeReferenceName\":\"MedianChange\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Avg Change Month over Month\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"vcObjects\":{\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 95.00,
+          "width": 306.67,
+          "x": 422.50,
+          "y": 702.50,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"ea3cd614d90543771aaa\",\"layouts\":[{\"id\":0,\"position\":{\"x\":48.10996563573883,\"y\":1328.1786941580756,\"z\":4000,\"width\":1185.5670103092784,\"height\":469.07216494845363,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Category\":[{\"queryRef\":\"DateTable.Date\",\"active\":true}],\"Y\":[{\"queryRef\":\"_Mæligildi.Vís. Neys. Mánaðar breyting\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"DateTable\",\"Type\":0},{\"Name\":\"_\",\"Entity\":\"_Mæligildi\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"DateTable.Date\",\"NativeReferenceName\":\"Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"_\"}},\"Property\":\"Vís. Neys. Mánaðar breyting\"},\"Name\":\"_Mæligildi.Vís. Neys. Mánaðar breyting\",\"NativeReferenceName\":\"Vís. Neys. Mánaðar breyting\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"valueAxis\":[{\"properties\":{\"logAxisScale\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"zoom\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"trend\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"displayName\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend line 1'\"}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Vísitala Neysluverðs til Verðtryggingar'\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"18D\"}}}}}],\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 469.07,
+          "width": 1185.57,
+          "x": 48.11,
+          "y": 1328.18,
+          "z": 4000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

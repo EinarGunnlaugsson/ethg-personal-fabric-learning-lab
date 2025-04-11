@@ -1,0 +1,64 @@
+table SortedTable
+	lineageTag: 5fe5291f-83b4-42c1-a9ec-5767165b9ff6
+
+	column DateColumn
+		formatString: General Date
+		lineageTag: 10f7f868-332e-4c42-b8f7-abf250c98681
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: VIS01004 (2)[DateColumn]
+
+		annotation SummarizationSetBy = Automatic
+
+	column OriginalValue
+		lineageTag: 99744c15-6a92-441c-8720-4079eb45dd71
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [OriginalValue]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column PreviousValue
+		lineageTag: e635598d-afcc-4ace-9bb9-2e56146e26a9
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [PreviousValue]
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column MonthOverMonthChange
+		formatString: #,0.00
+		lineageTag: cb9799a2-a17a-4512-98d2-ef0e98ae7592
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [MonthOverMonthChange]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition SortedTable = calculated
+		mode: import
+		source = ```
+				
+				VAR SortedTable_var = 
+				    ADDCOLUMNS(
+				        SUMMARIZE(
+				            'VIS01004 (2)',
+				            'VIS01004 (2)'[DateColumn],
+				            "OriginalValue", SUM('VIS01004 (2)'[Column1.values]),
+				            "PreviousValue", CALCULATE(
+				                SUM('VIS01004 (2)'[Column1.values]),
+				                DATEADD('VIS01004 (2)'[DateColumn], -1, MONTH)
+				            )
+				        ),
+				        "MonthOverMonthChange", if([PreviousValue] = blank(), blank(), [OriginalValue] - [PreviousValue])
+				    )
+				RETURN
+				    SortedTable_var
+				```
+
+	annotation PBI_Id = c3cd33c774c349fcbb23cbcc2ac09a6b
+

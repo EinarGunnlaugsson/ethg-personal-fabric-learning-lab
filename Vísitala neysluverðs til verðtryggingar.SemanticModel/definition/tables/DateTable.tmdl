@@ -1,0 +1,82 @@
+table DateTable
+	lineageTag: 27fc2590-3e28-4c44-8227-b241abb276cd
+
+	column Date
+		formatString: General Date
+		lineageTag: 41026a5a-c802-4830-af4b-d5cfdb004e91
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Year
+		formatString: 0
+		lineageTag: 03b72124-03c3-4b31-abc5-e70e5b1f731c
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Year]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		formatString: 0
+		lineageTag: bb222d3b-4487-40c6-a5d9-432dc42c6876
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Month]
+
+		annotation SummarizationSetBy = Automatic
+
+	column MonthName
+		lineageTag: a72fd891-08da-46db-a5de-482f786da34c
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [MonthName]
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		formatString: 0
+		lineageTag: 1510a2c8-bf4b-451f-b81c-87e6176fdd65
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [Quarter]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfWeek
+		formatString: 0
+		lineageTag: 99f39811-9448-414d-9f44-7fdeb446cdee
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfWeek]
+
+		annotation SummarizationSetBy = Automatic
+
+	column DayOfMonth
+		formatString: 0
+		lineageTag: fdf7537f-ea68-467e-9755-0792029cf0de
+		summarizeBy: sum
+		isNameInferred
+		sourceColumn: [DayOfMonth]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition DateTable = calculated
+		mode: import
+		source =
+				
+				ADDCOLUMNS(
+				    CALENDAR(DATE(1995,1,1), TODAY() + 100),  // Change the start date to match your dataset
+				    "Year", YEAR([Date]),
+				    "Month", MONTH([Date]),
+				    "MonthName", FORMAT([Date], "MMMM"),
+				    "Quarter", QUARTER([Date]),
+				    "DayOfWeek", WEEKDAY([Date]),
+				    "DayOfMonth", DAY([Date])
+				    --"DayOfYear", DAY([Date], 365)
+				)
+
+	annotation PBI_Id = 727cc5ed452f44459a33b8c307a26ba9
+
